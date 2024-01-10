@@ -1,46 +1,104 @@
-# TensorFlow Fashion MNIST Models
+# Convolutional Neural Network (CNN) for Fashion MNIST Classification
 
-This repository contains a TensorFlow script (`fashion_mnist_models.py`) for building and training two models on the Fashion MNIST dataset. The script first creates a basic neural network and then extends it to a Convolutional Neural Network (CNN). 
+This repository contains TensorFlow code for building and training Convolutional Neural Networks (CNNs) on the Fashion MNIST dataset. The code is provided in two versions, one using a simple Dense neural network and the other using a Convolutional Neural Network.
 
-The script loads the Fashion MNIST dataset, normalizes pixel values, and constructs a sequential neural network model with hidden and output layers. The model is compiled using the Adam optimizer, sparse categorical crossentropy loss, and accuracy metric. After training for 5 epochs, the script evaluates the model on the test data, printing the test loss and accuracy.
+## Table of Contents
 
-Following this, the script reloads the dataset, reshapes and normalizes pixel values for the CNN model. The CNN model is then built with Conv2D, MaxPooling2D, Flatten, and Dense layers. The CNN model is compiled, its summary is displayed, and it is trained for 5 epochs. The script evaluates the CNN model on the test data, printing the results.
+- [Dense Neural Network](#dense-neural-network)
+- [Convolutional Neural Network (CNN)](#convolutional-neural-network-cnn)
+- [Visualization of Convolutional Layers](#visualization-of-convolutional-layers)
 
-For visual inspection, the script utilizes Matplotlib to create subplots for visualizing convolutional activations. It creates an activation model to get intermediate layer outputs and visualizes convolutional activations for three different images.
+## Dense Neural Network
 
-## Instructions:
+```python
+import tensorflow as tf
 
-1. **Clone the repository:** `git clone https://github.com/RJohnPaul/CNN_for_Vision_Mod.git`
+# Load Fashion MNIST dataset
+mnist = tf.keras.datasets.fashion_mnist
+(training_images, training_labels), (test_images, test_labels) = mnist.load_data()
+training_images = training_images / 255.0
+test_images = test_images / 255.0
 
-## Requirements:
+# Build and compile the model
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dense(10, activation='softmax')
+])
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-- [TensorFlow](https://www.tensorflow.org/install): `pip install tensorflow`
-- [Matplotlib](https://matplotlib.org/stable/users/installing.html): `pip install matplotlib`
+# Train the model
+model.fit(training_images, training_labels, epochs=5)
 
-## Run the Code:
+# Evaluate the model on the test set
+test_loss, test_accuracy = model.evaluate(test_images, test_labels)
+print(f'Test loss: {test_loss}, Test accuracy: {test_accuracy * 100}%')
+```
 
-1. **Install dependencies:** `pip install -r requirements.txt`
-2. **Run the script:** `python fashion_mnist_models.py`
+## Convolutional Neural Network (CNN)
 
-## Features:
+```python
+import tensorflow as tf
 
-- **Modular Code:** Easily understand and modify the script for your own projects.
-- **Versatile Models:** Neural network and Convolutional Neural Network models for image classification.
-- **Visualization:** Convolutional activation visualizations for enhanced understanding.
-- **Educational:** Suitable for learning TensorFlow basics and CNN concepts.
+# Load Fashion MNIST dataset
+mnist = tf.keras.datasets.fashion_mnist
+(training_images, training_labels), (test_images, test_labels) = mnist.load_data()
+training_images = training_images.reshape(60000, 28, 28, 1) / 255.0
+test_images = test_images.reshape(10000, 28, 28, 1) / 255.0
 
-## Results:
+# Build and compile the CNN model
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Conv2D(64, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2,2),
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dense(10, activation='softmax')
+])
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-After running the script, observe the test loss and accuracy for both the neural network and CNN models. Additionally, visualizations of CNN activations for three different images are provided.
+# Print model summary
+model.summary()
 
-## Modules Required:
+# Train the CNN model
+model.fit(training_images, training_labels, epochs=5)
 
-- **TensorFlow:** The open-source machine learning library. [Installation](https://www.tensorflow.org/install)
+# Evaluate the CNN model on the test set
+test_loss, test_accuracy = model.evaluate(test_images, test_labels)
+print(f'Test loss: {test_loss}, Test accuracy: {test_accuracy * 100}%')
+```
 
-- **Matplotlib:** A comprehensive library for creating static, animated, and interactive visualizations. [Installation](https://matplotlib.org/stable/users/installing.html)
+## Visualization of Convolutional Layers
 
-## License:
+This section of the code visualizes the activation of convolutional layers using matplotlib. It generates a 3x4 grid of images for the first, second, and third images in the test set.
 
-This project is licensed under the [MIT License](LICENSE).
+```python
+import matplotlib.pyplot as plt
+f, axarr = plt.subplots(3, 4)
+FIRST_IMAGE = 0
+SECOND_IMAGE = 23
+THIRD_IMAGE = 28
+CONVOLUTION_NUMBER = 6
 
----
+# Extract layer outputs for visualization
+layer_outputs = [layer.output for layer in model.layers]
+activation_model = tf.keras.models.Model(inputs=model.input, outputs=layer_outputs)
+
+# Visualize convolutional layer activations
+for x in range(0, 4):
+  f1 = activation_model.predict(test_images[FIRST_IMAGE].reshape(1, 28, 28, 1))[x]
+  axarr[0, x].imshow(f1[0, :, :, CONVOLUTION_NUMBER], cmap='inferno')
+  axarr[0, x].grid(False)
+  f2 = activation_model.predict(test_images[SECOND_IMAGE].reshape(1, 28, 28, 1))[x]
+  axarr[1, x].imshow(f2[0, :, :, CONVOLUTION_NUMBER], cmap='inferno')
+  axarr[1, x].grid(False)
+  f3 = activation_model.predict(test_images[THIRD_IMAGE].reshape(1, 28, 28, 1))[x]
+  axarr[2, x].imshow(f3[0, :, :, CONVOLUTION_NUMBER], cmap='inferno')
+  axarr[2, x].grid(False)
+```
+
+Feel free to explore and experiment with the code to understand the impact of different architectures on model performance and visualize the convolutional layers' activations.
+```
+
+Replace `"https://github.com/RJohnPaul/CNN_for_Vision_Mod.git"` with your actual GitHub repository URL. This README provides detailed information on the structure of the code, its functionality, and how to use and visualize the models.
