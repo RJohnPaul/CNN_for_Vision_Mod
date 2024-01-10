@@ -102,3 +102,5 @@ Feel free to explore and experiment with the code to understand the impact of di
 ```
 
 Replace `"https://github.com/RJohnPaul/CNN_for_Vision_Mod.git"` with your actual GitHub repository URL. This README provides detailed information on the structure of the code, its functionality, and how to use and visualize the models.
+
+---
