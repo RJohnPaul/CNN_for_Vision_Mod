@@ -100,9 +100,5 @@ for x in range(0, 4):
   axarr[2, x].grid(False)
 ```
 
-Feel free to explore and experiment with the code to understand the impact of different architectures on model performance and visualize the convolutional layers' activations.
-```
-
-Replace `"https://github.com/RJohnPaul/CNN_for_Vision_Mod.git"` with your actual GitHub repository URL. This README provides detailed information on the structure of the code, its functionality, and how to use and visualize the models.
 
 ---
