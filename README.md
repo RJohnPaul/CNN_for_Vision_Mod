@@ -2,7 +2,7 @@
 
 # Convolutional Neural Network (CNN) for Fashion MNIST Classification
 
-This repo contains TensorFlow code for building and training Convolutional Neural Networks (CNNs) on the Fashion MNIST dataset. The code is provided in two models, one using a simple Dense neural network and the other using a Convolutional Neural Network.
+This repo contains TensorFlow code for building and train Convolutional Neural Networks (CNNs) on the Fashion MNIST dataset. The code is provided in two models, one using a simple Dense neural network and the other using a Convolutional Neural Network.
 
 ## Table of Contents
 
