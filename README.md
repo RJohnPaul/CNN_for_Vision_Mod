@@ -116,7 +116,7 @@ for x in range(0, 4):
 
 <div align="center">
   <br>
-      <img src="https://github.com/RJohnPaul/Fashion_Mnist_Models/blob/265624bd37bdec443e62add66ccdd452761a0d6b/Frame-5(3).png" alt="Project Banner">
+      <img src="https://github.com/RJohnPaul/CNN_for_Vision_Mod/blob/ceb3ffe38754d9e3e1fd6d283d8f746a150e9510/Frame%2024.png" alt="Project Banner">
   </br>
 </div>
 </br>
