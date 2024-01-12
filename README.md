@@ -10,7 +10,7 @@
 
 <div align="center">
   <br>
-      <img src="https://github.com/RJohnPaul/Fashion_Mnist_Models/blob/265624bd37bdec443e62add66ccdd452761a0d6b/Frame-5(3).png" alt="Project Banner">
+      <img src="https://github.com/RJohnPaul/CNN_for_Vision_Mod/blob/491454d098865cc20cc09001af825c5ba97f27c7/Frame-5.png" alt="Project Banner">
   </br>
 </div>
 </br>
