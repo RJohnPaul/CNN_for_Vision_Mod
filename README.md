@@ -2,6 +2,20 @@
 
 # Convolutional Neural Network (CNN) for Fashion MNIST Classification
 
+<div align="center">
+  <br>
+      <img src="https://github.com/RJohnPaul/Fashion_Mnist_Models/blob/ea69d23ebf38b0608e666d313f7ebf1aee9d751e/Frame%2015.png" alt="Project Banner">
+  </br>
+</div>
+
+<div align="center">
+  <br>
+      <img src="https://github.com/RJohnPaul/Fashion_Mnist_Models/blob/265624bd37bdec443e62add66ccdd452761a0d6b/Frame-5(3).png" alt="Project Banner">
+  </br>
+</div>
+</br>
+
+
 This repo contains TensorFlow code for building and train Convolutional Neural Networks (CNNs) on the Fashion MNIST dataset. The code is provided in two models, one using a simple Dense neural network and the other using a Convolutional Neural Network.
 
 ## Table of Contents
@@ -99,6 +113,13 @@ for x in range(0, 4):
   axarr[2, x].imshow(f3[0, :, :, CONVOLUTION_NUMBER], cmap='inferno')
   axarr[2, x].grid(False)
 ```
+
+<div align="center">
+  <br>
+      <img src="https://github.com/RJohnPaul/Fashion_Mnist_Models/blob/265624bd37bdec443e62add66ccdd452761a0d6b/Frame-5(3).png" alt="Project Banner">
+  </br>
+</div>
+</br>
 
 
 ---
