@@ -4,7 +4,7 @@
 
 <div align="center">
   <br>
-      <img src="https://github.com/RJohnPaul/Fashion_Mnist_Models/blob/ea69d23ebf38b0608e666d313f7ebf1aee9d751e/Frame%2015.png" alt="Project Banner">
+      <img src="https://github.com/RJohnPaul/CNN_for_Vision_Mod/blob/826787aba21a291d51bffef81492113979627c62/Frame%2023.png" alt="Project Banner">
   </br>
 </div>
 
